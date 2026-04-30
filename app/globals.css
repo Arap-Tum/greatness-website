@@ -1,26 +1,187 @@
 @import "tailwindcss";
+@tailwind utilities;
 
+/* =========================
+   ROOT DESIGN SYSTEM (PREMIUM DARK UI)
+   ========================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* === CORE COLORS === */
+  --color-bg: 0 0 0;                 /* true black */
+  --color-surface: 12 12 12;         /* deeper than before */
+  --color-surface-elevated: 20 20 20;
+
+  --color-text: 255 255 255;
+  --color-text-soft: 200 200 200;
+  --color-muted: 140 140 140;
+
+  --color-border: 255 255 255 / 0.08;
+
+  /* === BRAND GRADIENT (REFINED) === */
+  --gradient-primary: linear-gradient(
+    90deg,
+    #6d28ff 0%,
+    #ff2da0 45%,
+    #ff7a18 100%
+  );
+
+  --gradient-subtle: linear-gradient(
+    135deg,
+    rgba(109, 40, 255, 0.15),
+    rgba(255, 45, 160, 0.12),
+    rgba(255, 122, 24, 0.1)
+  );
+
+  /* === GLOW SYSTEM (LESS HARSH) === */
+  --glow-primary: 0 0 60px rgba(255, 45, 160, 0.25);
+  --glow-soft: 0 0 30px rgba(255, 45, 160, 0.15);
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  /* === RADIUS === */
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+
+  /* === MOTION === */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-base: all 0.4s var(--ease-premium);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* =========================
+   BASE
+   ========================= */
+@layer base {
+  * {
+    @apply border-[color:rgb(var(--color-border))];
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    background-color: rgb(var(--color-bg));
+  }
+
+  ::selection {
+    background: #ff2da0;
+    color: white;
+  }
+
+  h1, h2, h3 {
+    @apply font-semibold tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================
+   UTILITIES
+   ========================= */
+@layer utilities {
+
+  /* TEXT */
+  .text-muted {
+    color: rgb(var(--color-muted));
+  }
+
+  .text-soft {
+    color: rgb(var(--color-text-soft));
+  }
+
+  /* BACKGROUNDS */
+  .bg-surface {
+    background-color: rgb(var(--color-surface));
+  }
+
+  .bg-surface-elevated {
+    background-color: rgb(var(--color-surface-elevated));
+  }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  /* TEXT GRADIENT */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* CARDS */
+  .card {
+    background: rgb(var(--color-surface));
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-lg), var(--glow-soft);
+  }
+
+  /* GLASS CARD (NEW — MATCHES MODERN UI) */
+  .card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    background: var(--gradient-primary);
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    font-weight: 500;
+    color: white;
+    transition: var(--transition-base);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: var(--glow-primary);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    transition: var(--transition-base);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* SECTION */
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 py-28;
+  }
+
+  /* HEADINGS (TUNED TO YOUR HERO DESIGN) */
+  .heading-xl {
+    @apply text-[clamp(3rem,7vw,5.5rem)] leading-[1.02];
+  }
+
+  .heading-lg {
+    @apply text-[clamp(2rem,4.5vw,3.2rem)];
+  }
+
+  /* GRADIENT DIVIDER (MATCH IMAGE) */
+  .divider-gradient {
+    height: 10px;
+    width: 220px;
+    border-radius: 999px;
+    background: var(--gradient-primary);
+    box-shadow: var(--glow-soft);
+  }
 }
