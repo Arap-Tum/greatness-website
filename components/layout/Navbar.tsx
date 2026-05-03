@@ -258,7 +258,7 @@ function MobileMenu({
                 onClick={onClose}
                 className="btn-primary w-full text-center block"
               >
-                Let&pos;s Talk →
+                Lets Talk →
               </Link>
 
               {/* Quick contact */}
@@ -397,7 +397,7 @@ export default function Navbar() {
             </div>
 
             <Link href="/contact" className="btn-primary !py-2.5 !px-5 !text-sm">
-              Let&apos;s Talk
+              Lets Talk
             </Link>
           </div>
 
