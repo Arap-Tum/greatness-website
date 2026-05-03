@@ -313,7 +313,7 @@ export default function AboutPreview() {
               Ready to grow?
             </p>
             <h3 className="heading-lg font-bold mb-8 max-w-lg mx-auto leading-tight">
-              Let &apos s build something
+              Let's build something
               <span className="text-gradient">great together</span>
             </h3>
             <div className="flex flex-wrap justify-center gap-4">

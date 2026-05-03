@@ -92,13 +92,14 @@ export default function Hero() {
         transition={{ delay: 0.7, duration: 0.8 }}
         className="mt-10 flex flex-wrap justify-center gap-4"
       >
-        <MagneticButton href="/#work" className="btn-primary">
-          View Work
-        </MagneticButton>
-
-        <MagneticButton href="/about" className="btn-outline">
-          About Us
-        </MagneticButton>
+   <div className="flex flex-wrap justify-center gap-4">
+              <a href="/contact" className="btn-primary">
+                Start a Project
+              </a>
+              <a href="/work" className="btn-outline">
+                See Our Work
+              </a>
+            </div>
       </motion.div>
 
       {/* === ANIMATED GRADIENT BAR === */}
