@@ -7,7 +7,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
    CONFIGURATION — update these with real details
 ═══════════════════════════════════════════════════ */
 const CONTACT = {
-  whatsapp:  'https://wa.me/254700000000',     // ← replace with real number
+  whatsapp:  'https://wa.me/254717005220',     // ← replace with real number
   email:     'hello@greatnesscreative.co.ke',  // ← replace with real email
   instagram: 'https://instagram.com/greatnesscreative', // ← replace
   twitter:   'https://twitter.com/greatnesscreative',   // ← replace

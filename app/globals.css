@@ -49,6 +49,56 @@
   --transition-base: all 0.4s var(--ease-premium);
 }
 
+
+/* =========================
+   THEME VARIANTS
+   ========================= */
+
+/* Theme B — Lifted surface (for About, Showcase) */
+[data-theme="lifted"] {
+  --color-bg: 8 8 12;
+  --color-surface: 18 18 24;
+  --color-surface-elevated: 28 28 36;
+
+  --gradient-subtle: linear-gradient(
+    135deg,
+    rgba(109, 40, 255, 0.08),
+    rgba(255, 45, 160, 0.04)
+  );
+
+  --glow-primary: 0 0 40px rgba(109, 40, 255, 0.18);
+}
+
+/* Theme C — Warm surface (for Services, Contact) */
+[data-theme="warm"] {
+  --color-bg: 14 10 10;
+  --color-surface: 24 18 16;
+  --color-surface-elevated: 34 24 22;
+
+  --gradient-subtle: linear-gradient(
+    135deg,
+    rgba(255, 122, 24, 0.12),
+    rgba(255, 45, 160, 0.08)
+  );
+}
+
+[data-theme="luxury"] {
+  --color-bg: 6 6 6;
+  --color-surface: 16 16 16;
+  --color-surface-elevated: 26 26 26;
+
+  --gradient-primary: linear-gradient(
+    90deg,
+    #d4af37 0%,
+    #f5d76e 50%,
+    #fff3c4 100%
+  );
+
+  --glow-primary: 0 0 50px rgba(212, 175, 55, 0.18);
+
+  --color-muted: 170 165 145;
+}
+
 /* =========================
    BASE
    ========================= */

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Logo from '../media/Logo'
 
 /* ─────────────────────────────────────────
    ROUTES
@@ -27,12 +28,12 @@ function LogoMark() {
         className="w-9 h-9 rounded-[10px] flex items-center justify-center
                    text-[0.65rem] font-bold text-white relative overflow-hidden
                    transition-transform duration-300 group-hover:scale-105"
-        style={{ background: 'var(--gradient-primary)' }}
+        // style={{ background: 'var(--gradient-primary)' }}
       >
         {/* Inner shine */}
         <div className="absolute inset-0 bg-white/10 rounded-[10px]
                         opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        <span className="relative z-10 tracking-wider">GC</span>
+        <span className="relative z-10 tracking-wider"><Logo /></span>
       </div>
 
       {/* Word mark */}

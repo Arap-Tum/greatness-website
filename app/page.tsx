@@ -6,12 +6,31 @@ import ShowcasePreview from "@/components/sections/ShowcasePreview";
 
 export default function Home() {
   return (
-<>
-<Hero />
-<AboutPreview />
-<ServicesPreview />
-<ShowcasePreview />
-<ContactSection />
-</>
+    <>
+      {/* Hero = default brand theme */}
+      <Hero />
+
+      {/* Calm intelligent */}
+      <section data-theme="lifted">
+        <AboutPreview />
+      </section>
+
+      {/* Warm conversion section */}
+      <section data-theme="warm">
+        <ServicesPreview />
+      </section>
+
+      {/* Back to cinematic black */}
+      <section data-theme="luxury">
+        <ShowcasePreview />
+
+      </section>
+      
+
+      {/* Human / welcoming */}
+      <section data-theme="warm">
+        <ContactSection />
+      </section>
+    </>
   );
 }

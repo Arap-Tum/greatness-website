@@ -2,9 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import MagneticButton from '@/components/ui/MagneticButton'
 
-export default function Hero() {
+
+
+import Logo from '../media/Logo'
+
+
+export default function Hero( ) {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
@@ -47,8 +51,10 @@ export default function Hero() {
         className="mb-12"
       >
         {/* Replace with your actual logo */}
-        <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-xs text-muted backdrop-blur-md">
-          LOGO
+        <div 
+        className="pt-20"
+        >
+          <Logo />
         </div>
       </motion.div>
 

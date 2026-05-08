@@ -58,10 +58,12 @@ export default function AboutPreview() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden section-padding"
+      
+
+    className="relative overflow-hidden section-padding bg-surface"
     >
       {/* ── Ambient background glows ── */}
-      <div className="pointer-events-none absolute inset-0">
+      <div  className="absolute top-0 left-0 right-0 h-px bg-gradient-primary opacity-30">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]
                         bg-[radial-gradient(ellipse,rgba(109,40,255,0.08),transparent_70%)]" />
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px]
@@ -313,14 +315,14 @@ export default function AboutPreview() {
               Ready to grow?
             </p>
             <h3 className="heading-lg font-bold mb-8 max-w-lg mx-auto leading-tight">
-              Let's build something
+              Let&apos;s build something
               <span className="text-gradient">great together</span>
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="/contact" className="btn-primary">
                 Start a Project
               </a>
-              <a href="/work" className="btn-outline">
+              <a href="/showcase" className="btn-outline">
                 See Our Work
               </a>
             </div>
