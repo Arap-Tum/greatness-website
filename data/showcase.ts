@@ -10,7 +10,7 @@ export const showcaseCompanies: ShowcaseCompany[] = [
 
     tagline: 'School in Tassia, Embakasi',
 
-    logo: '/assets/showcase/logos/brookhill.png',
+    logo: '/assets/showcase/logos/brookhil.jpeg',
 
     initials: 'BA',
 
@@ -37,13 +37,7 @@ export const showcaseCompanies: ShowcaseCompany[] = [
             url: '/assets/showcase/images/brookhillPoste.png',
           },
 
-          {
-            id: '3',
-            type: 'video',
-            url: 'public/assets/showcase/video/brookhillVideo2.mp4',
-            thumbnail:
-              '/assets/showcase/brookhill/images/poster1.jpg',
-          },
+       
         ],
       },
     ],
@@ -58,7 +52,7 @@ export const showcaseCompanies: ShowcaseCompany[] = [
 
     tagline: 'Insurance solutions simplified',
 
-    logo: '/assets/showcase/logos/monvid.png',
+    logo: '/assets/showcase/logos/monvid.jpeg',
 
     initials: 'MI',
 
@@ -71,13 +65,13 @@ export const showcaseCompanies: ShowcaseCompany[] = [
         title: 'Jamhuri Day Campaign',
 
         media: [
-          {
-            id: '1',
-            type: 'video',
-            url: '/assets/showcase/monvid/videos/monvid.mp4',
-            thumbnail:
-              '/assets/showcase/images/movidPoster.png',
-          },
+          // {
+          //   id: '1',
+          //   type: 'video',
+          //   url: '/assets/showcase/monvid/videos/monvid.mp4',
+          //   thumbnail:
+          //     '/assets/showcase/images/movidPoster.png',
+          // },
 
           {
             id: '2',

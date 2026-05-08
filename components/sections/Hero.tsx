@@ -7,13 +7,15 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 import Logo from '../media/Logo'
 
+// import backgroundVideo from 'public/assets/heroVideo.mp4'
+
 
 export default function Hero( ) {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  const smoothX = useSpring(mouseX, { damping: 40, stiffness: 200 })
-  const smoothY = useSpring(mouseY, { damping: 40, stiffness: 200 })
+  // const smoothX = useSpring(mouseX, { damping: 40, stiffness: 200 })
+  // const smoothY = useSpring(mouseY, { damping: 40, stiffness: 200 })
 
 
  useEffect(() => {
@@ -28,35 +30,24 @@ export default function Hero( ) {
 
 
   return (
-    <section className="relative min-h-svh flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 overflow-hidden text-center">
+<section className="relative min-h-svh flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 overflow-hidden text-center">
 
-      {/* === CURSOR GLOW (ELITE EFFECT) === */}
-      {/* Cursor glow — always rendered; 'use client' means no SSR mismatch */}
-      <motion.div
-        style={{ x: smoothX, y: smoothY }}
-        className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2
-                   w-125 h-125 rounded-full blur-[120px] opacity-20"
-      >
-        <div className="w-full h-full bg-gradient-primary" />
-      </motion.div>
+      {/* BACKGROUND VIDEO */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src="/assets/heroVideo.mp4" type="video/mp4" />
+  </video>
 
-      {/* STATIC BACKGROUND DEPTH */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,45,160,0.06),transparent_60%)]" />
+  {/* DARK OVERLAY */}
+  <div className="absolute inset-0 bg-black/60" />
 
       {/* === LOGO (BLUR REVEAL) === */}
-      <motion.div
-        initial={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-        transition={{ duration: 1 }}
-        className="mb-12"
-      >
-        {/* Replace with your actual logo */}
-        <div 
-        className="pt-20"
-        >
-          <Logo />
-        </div>
-      </motion.div>
+      
 
       {/* === HEADLINE (CINEMATIC SPLIT) === */}
       <div className="overflow-hidden">

@@ -291,7 +291,7 @@ export default function Footer() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/254700000000"
+                  href="https://wa.me/254717005220"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3"
@@ -309,7 +309,7 @@ export default function Footer() {
                   <div>
                     <p className="text-[0.65rem] text-muted uppercase tracking-widest mb-0.5">WhatsApp</p>
                     <p className="text-sm text-soft group-hover:text-white transition-colors duration-300">
-                      +254 700 000 000
+                      +254717005220
                     </p>
                   </div>
                 </a>
