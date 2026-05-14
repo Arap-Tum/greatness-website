@@ -2,6 +2,7 @@
 
 import { useRef, useState, ChangeEvent, FormEvent } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useBfcacheRefresh } from '@/hooks/useBfcacheRefresh'
 
 /* ═══════════════════════════════════════════════════
    CONFIGURATION — update these with real details
@@ -93,6 +94,8 @@ const IconCheck = () => (
    CONTACT SECTION — used on both homepage + page
 ═══════════════════════════════════════════════════ */
 export default function ContactSection({ isPage = false }: { isPage?: boolean }) {
+  const bfKey = useBfcacheRefresh()
+
   const ref    = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
   const anim   = inView ? 'visible' : 'hidden'
@@ -140,6 +143,7 @@ export default function ContactSection({ isPage = false }: { isPage?: boolean })
   return (
     <section
       ref={ref}
+      key={bfKey}
       className={`relative overflow-hidden ${isPage ? 'min-h-screen' : ''} section-padding`}
     >
       {/* ── Ambient glows ── */}
@@ -214,7 +218,7 @@ export default function ContactSection({ isPage = false }: { isPage?: boolean })
 
               <div className="relative z-10">
                 <p className="text-soft text-base leading-relaxed mb-5">
-                  We don&epos;t do cold, robotic replies. When you reach out, a real human from our
+                  We don&apos;t do cold, robotic replies. When you reach out, a real human from our
                   team reads your message and gets back to you personally.
                 </p>
                 <p className="text-muted text-sm leading-relaxed">

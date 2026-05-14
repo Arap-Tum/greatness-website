@@ -1,32 +1,18 @@
 import ShowcaseImage from './ShowcaseImage'
 import ShowcaseVideo from './ShowcaseVideo'
 
+
+
 interface Props {
   mediaType: 'image' | 'video'
-  thumbnail: string
-  videoUrl?: string
+  src: string          // works for both images and videos
   title: string
 }
 
-export default function MediaThumbnail({
-  mediaType,
-  thumbnail,
-  videoUrl,
-  title,
-}: Props) {
-  if (mediaType === 'video' && videoUrl) {
-    return (
-      <ShowcaseVideo
-        src={videoUrl}
-        poster={thumbnail}
-      />
-    )
+export default function MediaThumbnail({ mediaType, src, title }: Props) {
+  if (mediaType === 'video') {
+    return <ShowcaseVideo src={src} />
   }
 
-  return (
-    <ShowcaseImage
-      src={thumbnail}
-      alt={title}
-    />
-  )
+  return <ShowcaseImage src={src} alt={title} />
 }

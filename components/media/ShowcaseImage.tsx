@@ -7,16 +7,17 @@ interface Props {
 
 export default function ShowcaseImage({ src, alt }: Props) {
   return (
-    <div className="relative w-full aspect-video overflow-hidden rounded-[var(--radius-lg)] group">
+    // A2 portrait ratio: 2:3
+    <div className="relative w-full overflow-hidden rounded-[var(--radius-lg)] group" style={{ aspectRatio: '2 / 3' }}>
       <Image
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
       />
 
-      {/* Subtle vignette */}
+      {/* Subtle vignette on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Image badge */}

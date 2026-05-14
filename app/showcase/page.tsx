@@ -1,5 +1,6 @@
 import { showcaseCompanies } from '@/data/showcase'
 import MediaThumbnail from '@/components/media/MediaThumbnail'
+import CompanyLogo from '@/components/media/CompanyLogo'
 
 export default function ShowcasePage() {
   return (
@@ -24,9 +25,8 @@ export default function ShowcasePage() {
         />
 
         <div className="relative z-10 max-w-3xl">
-          {/* Gradient pill label */}
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04]">
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-primary" style={{ background: 'var(--gradient-primary)' }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--gradient-primary)' }} />
             <span className="text-xs font-medium tracking-widest uppercase text-muted">Selected Works</span>
           </div>
 
@@ -35,7 +35,6 @@ export default function ShowcasePage() {
             <span className="text-gradient">Showcase</span>
           </h1>
 
-          {/* Divider bar */}
           <div className="divider-gradient mb-6" />
 
           <p className="text-[clamp(1rem,1.4vw,1.15rem)] text-muted leading-relaxed max-w-xl">
@@ -53,33 +52,30 @@ export default function ShowcasePage() {
 
             {/* Subtle section divider (skip first) */}
             {companyIndex > 0 && (
-              <div className="h-px w-full mb-24" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)' }} />
+              <div
+                className="h-px w-full mb-24"
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)' }}
+              />
             )}
 
             {/* ── Company header ── */}
             <div className="card-glass flex flex-col sm:flex-row sm:items-center gap-5 p-6 mb-10">
-
               {/* Logo */}
-              <div className="shrink-0">
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  width={64}
-                  height={64}
-                  className="rounded-2xl border border-white/10 bg-surface object-contain"
-                  style={{ background: 'rgb(var(--color-surface-elevated))' }}
-                />
-              </div>
+              <CompanyLogo
+                src={company.logo}
+                name={company.name}
+                initials={company.initials}
+                accent={company.accent}
+              />
 
               {/* Meta */}
               <div className="flex-1 min-w-0">
-                {/* Category badge */}
                 <span
                   className="inline-block text-[10px] font-semibold tracking-[0.12em] uppercase mb-2 px-2.5 py-0.5 rounded-full border"
                   style={{
                     background: 'var(--gradient-subtle)',
-                    borderColor: 'rgba(255,45,160,0.2)',
-                    color: '#cc87b8',
+                    borderColor: company.accent + '40',
+                    color: company.accent,
                   }}
                 >
                   {company.category}
@@ -92,10 +88,10 @@ export default function ShowcasePage() {
                 <p className="text-muted text-sm leading-relaxed">{company.tagline}</p>
               </div>
 
-              {/* Project count */}
+              {/* Total media count */}
               <div className="shrink-0 self-start sm:self-center text-right">
                 <span className="text-[11px] text-muted tracking-wider uppercase">
-                  {company.projects.length} project{company.projects.length !== 1 ? 's' : ''}
+                  {company.projects.reduce((acc, p) => acc + p.media.length, 0)} assets
                 </span>
               </div>
             </div>
@@ -106,8 +102,11 @@ export default function ShowcasePage() {
                 <div key={project.id}>
 
                   {/* Project heading */}
-                  <div className="flex items-start gap-3 mb-5">
-                    <div className="w-0.5 h-full self-stretch rounded-full bg-gradient-primary shrink-0 mt-1" style={{ background: 'var(--gradient-primary)', minHeight: '2.5rem' }} />
+                  <div className="flex items-start gap-3 mb-6">
+                    <div
+                      className="w-0.5 shrink-0 mt-1 rounded-full"
+                      style={{ background: company.accent, minHeight: '2.5rem', alignSelf: 'stretch' }}
+                    />
                     <div>
                       <h3 className="text-xl font-semibold tracking-tight mb-1">{project.title}</h3>
                       {project.description && (
@@ -116,57 +115,32 @@ export default function ShowcasePage() {
                     </div>
                   </div>
 
-                  {/* ── Media grid ── */}
-                  {project.media.length === 1 && (
-                    <div className="w-full rounded-[var(--radius-xl)] overflow-hidden shadow-[var(--shadow-lg)]">
-                      <MediaThumbnail
-                        mediaType={project.media[0].type}
-                        thumbnail={project.media[0].type === 'video' ? project.media[0].thumbnail || '' : project.media[0].url}
-                        videoUrl={project.media[0].type === 'video' ? project.media[0].url : undefined}
-                        title={project.title}
-                      />
-                    </div>
-                  )}
-
-                  {project.media.length === 2 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {project.media.map((media) => (
-                        <div
-                          key={media.id}
-                          className="card card-hover overflow-hidden p-0 rounded-[var(--radius-lg)]"
-                        >
-                          <MediaThumbnail
-                            mediaType={media.type}
-                            thumbnail={media.type === 'video' ? media.thumbnail || '' : media.url}
-                            videoUrl={media.type === 'video' ? media.url : undefined}
-                            title={project.title}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {project.media.length >= 3 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {/* First item spans 2 cols on lg if count is 3 */}
-                      {project.media.map((media, i) => (
-                        <div
-                          key={media.id}
-                          className={`
-                            card card-hover overflow-hidden p-0 rounded-[var(--radius-lg)]
-                            ${project.media.length === 3 && i === 0 ? 'lg:col-span-2' : ''}
-                          `}
-                        >
-                          <MediaThumbnail
-                            mediaType={media.type}
-                            thumbnail={media.type === 'video' ? media.thumbnail || '' : media.url}
-                            videoUrl={media.type === 'video' ? media.url : undefined}
-                            title={project.title}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {/*
+                    ── Responsive A2 poster grid ──
+                    • Each cell is portrait (2:3 ratio) — enforced by the child component
+                    • Grid auto-fills with min 160px columns → naturally goes
+                      1 col on mobile, 2 on sm, 3 on md, 4 on lg, 5 on xl
+                    • Unlimited media items — just keep adding to the data array
+                  */}
+                  <div
+                    className="grid gap-4"
+                    style={{
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+                    }}
+                  >
+                    {project.media.map((media) => (
+                      <div
+                        key={media.id}
+                        className="rounded-[var(--radius-lg)] overflow-hidden shadow-[var(--shadow-md)]"
+                      >
+                        <MediaThumbnail
+                          mediaType={media.type}
+                          src={media.url}
+                          title={project.title}
+                        />
+                      </div>
+                    ))}
+                  </div>
 
                 </div>
               ))}

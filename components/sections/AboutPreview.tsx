@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useBfcacheRefresh } from '@/hooks/useBfcacheRefresh'
 
 /* ─────────────────────────────────────────
    DATA
@@ -51,6 +52,9 @@ const fadeUp = (delay = 0) => ({
    COMPONENT
 ───────────────────────────────────────── */
 export default function AboutPreview() {
+ const bfKey = useBfcacheRefresh()
+
+
   const ref    = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const anim   = inView ? 'visible' : 'hidden'
@@ -58,6 +62,7 @@ export default function AboutPreview() {
   return (
     <section
       ref={ref}
+      key={bfKey}
       
 
     className="relative overflow-hidden section-padding bg-surface"
@@ -186,7 +191,7 @@ export default function AboutPreview() {
               &quot;
               </span>
               <p className="text-soft text-base lg:text-lg leading-relaxed mb-8">
-                Great design is not just what looks beautiful — it &apos s what works beautifully
+                Great design is not just what looks beautiful  it&apos;s what works beautifully
                 and tells the truth about who you are.
               </p>
               <div className="flex items-center gap-4">
