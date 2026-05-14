@@ -83,7 +83,7 @@ export default function Hero() {
         className="mt-10 flex flex-wrap justify-center gap-4 relative z-10"
       >
         <a href="/contact" className="btn-primary">Start a Project</a>
-        <a href="/work" className="btn-outline">See Our Work</a>
+        <a href="/showcase" className="btn-outline">See Our Work</a>
       </motion.div>
 
       {/* === ANIMATED GRADIENT BAR === */}
