@@ -20,8 +20,7 @@ export default function Hero() {
   }, [mouseX, mouseY])
 
   return (
-    // key={bfKey} forces a full re-mount when page is restored from bfcache,
-    // so all initial → animate sequences fire again cleanly.
+   
     <section
       key={bfKey}
       className="relative min-h-svh flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 overflow-hidden text-center"
@@ -36,14 +35,14 @@ export default function Hero() {
         preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/assets/heroVideo.mp4" type="video/mp4" />
+        <source src="/assets/hero.mp4" type="video/mp4" />
       </video>
 
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* === HEADLINE === */}
-      {/* <div className="overflow-hidden relative z-10">
+      <div className="overflow-hidden relative z-10">
         <motion.h1
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -52,9 +51,9 @@ export default function Hero() {
         >
           Where Creativity
         </motion.h1>
-      </div> */}
+      </div>
 
-      {/* <div className="overflow-hidden relative z-10">
+      <div className="overflow-hidden relative z-10">
         <motion.h1
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -63,17 +62,17 @@ export default function Hero() {
         >
           Meets Greatness
         </motion.h1>
-      </div> */}
+      </div>
 
       {/* === SUBTEXT === */}
-      {/* <motion.p
+      <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-6 text-soft max-w-md relative z-10"
       >
         We craft bold, high-impact digital experiences for modern brands.
-      </motion.p> */}
+      </motion.p>
 
       {/* === CTA === */}
       <motion.div
